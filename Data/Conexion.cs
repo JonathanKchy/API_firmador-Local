@@ -7,7 +7,8 @@ namespace API2.Data
 {
     public class Conexion
     {
-        public static string rutaConexion = "Data Source=.;Initial Catalog = SODIG; Integrated Security = True";
+        //Data Source=172.16.101.10\SodigInterno;Initial Catalog=SodigInterno;User ID=sa
+        public static string rutaConexion = "Data Source = 172.16.101.10\\SodigInterno; Initial Catalog = SodigInterno; User ID = sa; Password=Cl4v3S3cr3t4";
 
     }
 }

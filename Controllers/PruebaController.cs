@@ -15,7 +15,7 @@ namespace API2.Controllers
     {
         [HttpGet]
         [Route("api/funciones/Suma")]
-        public String GetSuma(int idUsuario)
+        public String GetSuma([FromBody] int idUsuario)
         {
            /* List < Usuario > oUsuarios=new List<Usuario>();
             Usuario usuario = new Usuario();

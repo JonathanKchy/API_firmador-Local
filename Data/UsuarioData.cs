@@ -179,5 +179,59 @@ namespace API2.Data
 
             }
         }*/
+
+
+        ///segunda conexion
+        public static List<ActividadEconomica> ListarActividad()
+        {
+            ConexionSodig con = new ConexionSodig();
+            List<ActividadEconomica> oListaUsuario = new List<ActividadEconomica>();
+            using (SqlConnection oConexion = new SqlConnection(ConexionSodig.rutaConexion))
+            {
+                SqlCommand cmd = new SqlCommand("cliente.consultaActividadSodig", oConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                //try
+                //{
+                oConexion.Open();
+                //cmd.ExecuteNonQuery();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oListaUsuario.Add(new ActividadEconomica()
+                        {
+                            /*IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                            DocumentoIdentidad = dr["DocumentoIdentidad"].ToString(),
+                            Nombres = dr["Nombres"].ToString(),
+                            Telefono = dr["Telefono"].ToString(),
+                            Correo = dr["Correo"].ToString(),
+                            Ciudad = dr["Ciudad"].ToString(),
+                            FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"])*/
+
+                            fecha = dr["fecha"].ToString(),
+                            hora = dr["hora"].ToString(),
+                            ciudad = dr["ciudad"].ToString(),
+                            contacto = dr["contacto"].ToString(),
+                            identificacion = dr["identificacion"].ToString(),
+                            primerNombre = dr["primerNombre"].ToString(),
+                            segundoNombre = dr["segundoNombre"].ToString(),
+                            primerApellido = dr["primerApellido"].ToString(),
+                            segundoApellido = dr["segundoApellido"].ToString(),
+                            actividadEconomica = dr["actividadEconomica"].ToString()
+                        });
+                    }
+                }
+                return oListaUsuario;
+                //}
+                //catch (Exception ex)
+                //{
+                //  return oListaUsuario;
+                //}
+
+            }
+
+        }
     }
 }

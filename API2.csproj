@@ -163,12 +163,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\ActividadEconomicaController.cs" />
     <Compile Include="Controllers\FunctionRequest.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Models\ActividadEconomica.cs" />
     <Compile Include="Data\Conexion.cs" />
+    <Compile Include="Data\ConexionSodig.cs" />
     <Compile Include="Data\UsuarioData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,6 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ActividadEconomica\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

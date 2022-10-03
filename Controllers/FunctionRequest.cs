@@ -8,6 +8,5 @@ namespace API2.Controllers
     public class FunctionRequest
     {
         public decimal numero1;
-        public decimal numero2;
     }
 }
