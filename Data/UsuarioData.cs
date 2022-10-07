@@ -79,34 +79,34 @@ namespace API2.Data
 
                 //try
                 //{
-                    oConexion.Open();
-                    //cmd.ExecuteNonQuery();
+                oConexion.Open();
+                //cmd.ExecuteNonQuery();
 
-                    using (SqlDataReader dr = cmd.ExecuteReader())
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
                     {
-                        while (dr.Read())
+                        oListaUsuario.Add(new Usuario()
                         {
-                            oListaUsuario.Add(new Usuario()
-                            {
-                                /*IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
-                                DocumentoIdentidad = dr["DocumentoIdentidad"].ToString(),
-                                Nombres = dr["Nombres"].ToString(),
-                                Telefono = dr["Telefono"].ToString(),
-                                Correo = dr["Correo"].ToString(),
-                                Ciudad = dr["Ciudad"].ToString(),
-                                FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"])*/
+                            /*IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                            DocumentoIdentidad = dr["DocumentoIdentidad"].ToString(),
+                            Nombres = dr["Nombres"].ToString(),
+                            Telefono = dr["Telefono"].ToString(),
+                            Correo = dr["Correo"].ToString(),
+                            Ciudad = dr["Ciudad"].ToString(),
+                            FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"])*/
 
-                                contacto= dr["contacto"].ToString(),
-                                identificacion= dr["identificacion"].ToString(),
-                                primerNombre= dr["primerNombre"].ToString()
-                            });
-                        }
+                            contacto = dr["contacto"].ToString(),
+                            identificacion = dr["identificacion"].ToString(),
+                            primerNombre = dr["primerNombre"].ToString()
+                        });
                     }
-                    return oListaUsuario;
+                }
+                return oListaUsuario;
                 //}
                 //catch (Exception ex)
                 //{
-                  //  return oListaUsuario;
+                //  return oListaUsuario;
                 //}
 
             }
@@ -181,14 +181,14 @@ namespace API2.Data
         }*/
 
 
-        ///segunda conexion
+        //Solicitud para obtener el reporte de actividad economica
         public static List<ActividadEconomica> ListarActividad()
         {
-            ConexionSodig con = new ConexionSodig();
+            Conexion con = new Conexion();
             List<ActividadEconomica> oListaUsuario = new List<ActividadEconomica>();
-            using (SqlConnection oConexion = new SqlConnection(ConexionSodig.rutaConexion))
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
             {
-                SqlCommand cmd = new SqlCommand("cliente.consultaActividadSodig", oConexion);
+                SqlCommand cmd = new SqlCommand("consulta.ActividadEconomica", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 //try
@@ -202,14 +202,6 @@ namespace API2.Data
                     {
                         oListaUsuario.Add(new ActividadEconomica()
                         {
-                            /*IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
-                            DocumentoIdentidad = dr["DocumentoIdentidad"].ToString(),
-                            Nombres = dr["Nombres"].ToString(),
-                            Telefono = dr["Telefono"].ToString(),
-                            Correo = dr["Correo"].ToString(),
-                            Ciudad = dr["Ciudad"].ToString(),
-                            FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"])*/
-
                             fecha = dr["fecha"].ToString(),
                             hora = dr["hora"].ToString(),
                             ciudad = dr["ciudad"].ToString(),
@@ -233,5 +225,141 @@ namespace API2.Data
             }
 
         }
+
+        //Solicitud para obtener el reporte de pagos por transferencia
+        public static List<ReportePagosTransferencia> ListarReporte()
+        {
+            Conexion con = new Conexion();
+            List<ReportePagosTransferencia> oListaUsuario = new List<ReportePagosTransferencia>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
+            {
+                SqlCommand cmd = new SqlCommand("consulta.ReportePagoTransferencia", oConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                //try
+                //{
+                oConexion.Open();
+                //cmd.ExecuteNonQuery();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oListaUsuario.Add(new ReportePagosTransferencia()
+                        {
+                            identificacion = dr["identificacion"].ToString(),
+                            primerNombre = dr["primerNombre"].ToString(),
+                            segundoNombre = dr["segundoNombre"].ToString(),
+                            primerApellido = dr["primerApellido"].ToString(),
+                            segundoApellido = dr["segundoApellido"].ToString(),
+                            TipoDePago = dr["TipoDePago"].ToString(),
+                            Banco = dr["Banco"].ToString(),
+                            valor = Convert.ToInt32(dr["valor"]),
+                            fecha = dr["fecha"].ToString(),
+                            numeroTransaccion = dr["numeroTransaccion"].ToString(),
+                            numeroFactura = dr["numeroFactura"].ToString()
+                        });
+                    }
+                }
+                return oListaUsuario;
+                //}
+                //catch (Exception ex)
+                //{
+                //  return oListaUsuario;
+                //}
+
+            }
+
+        }
+
+        //Solicitud para obtener el reporte de tickets
+        public static List<Tickets> ListarTicket()
+        {
+            Conexion con = new Conexion();
+            List<Tickets> oListaUsuario = new List<Tickets>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
+            {
+                SqlCommand cmd = new SqlCommand("consulta.Tickets", oConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                //try
+                //{
+                oConexion.Open();
+                //cmd.ExecuteNonQuery();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oListaUsuario.Add(new Tickets()
+                        {
+                            idTicket = Convert.ToInt32(dr["idTicket"]),
+                            identificacion = dr["identificacion"].ToString(),
+                            nombre = dr["nombre"].ToString(),
+                            fechaIngreso = dr["fechaIngreso"].ToString(),
+                            detalle = dr["detalle"].ToString(),
+                            estadoTicket = dr["estadoTicket"].ToString(),
+                            tipoTicket = dr["tipoTicket"].ToString(),
+                            fechaCierre = dr["fechaCierre"].ToString()
+                        });
+                    }
+                }
+                return oListaUsuario;
+                //}
+                //catch (Exception ex)
+                //{
+                //  return oListaUsuario;
+                //}
+
+            }
+
+        }
+
+        //Solicitud para obtener el reporte de tickets
+        public static int ListarCertificadosVendidos(String ano, String mes, String dia)
+        {
+            int contador = 0;
+            Conexion con = new Conexion();
+            List<CertificadoVendido> oListaUsuario = new List<CertificadoVendido>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
+            {
+                SqlCommand cmd = new SqlCommand("consulta.CertificadosVendidos", oConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ano", ano);
+                cmd.Parameters.AddWithValue("@mes", mes);
+                cmd.Parameters.AddWithValue("@dia", dia);
+                Console.WriteLine(cmd.CommandText.ToString());
+
+                //try
+                //{
+                oConexion.Open();
+                //cmd.ExecuteNonQuery();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        contador++;
+                        oListaUsuario.Add(new CertificadoVendido()
+                        {
+                            idPago = Convert.ToInt32(dr["idPago"]),
+                            numeroFactura = dr["numeroFactura"].ToString(),
+                            fecha = dr["fecha"].ToString()
+                        });
+                    }
+
+                }
+                return contador;
+                //oConexion.Close();
+                //}
+                //catch (Exception ex)
+                //{
+                //  return oListaUsuario;
+                //}
+
+            }
+
+        }
     }
+
 }

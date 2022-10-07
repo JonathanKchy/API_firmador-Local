@@ -13,48 +13,13 @@ namespace API2.Controllers
 {
     public class PruebaController : ApiController
     {
-        [HttpGet]
+        [HttpPost]
         [Route("api/funciones/Suma")]
-        public String GetSuma([FromBody] int idUsuario)
+        public decimal GetSuma([FromBody] FunctionRequest request)
         {
-           /* List < Usuario > oUsuarios=new List<Usuario>();
-            Usuario usuario = new Usuario();
-            usuario.Correo = "hola.com";
-            usuario.Nombres = "Andres";
-            oUsuarios.Add(usuario);
-            Usuario usuario2 = new Usuario();
-            usuario2.Correo = "chao.com";
-            usuario2.Nombres = "Eve";
-            oUsuarios.Add(usuario2);
-            
-
-           //Conexion con = new Conexion();
-            string ruta = Conexion.rutaConexion;
-            //SqlConnection oConexion = new SqlConnection(ruta);
-            //return ruta;
-            SqlConnection oConexion = new SqlConnection(ruta);
-            SqlCommand cmd = new SqlCommand("usp_obtener", oConexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@idusuario", idUsuario);
-            oConexion.Open();
-            cmd.ExecuteNonQuery();
-            using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            usuario = new Usuario()
-                            {
-                                IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
-                                DocumentoIdentidad = dr["DocumentoIdentidad"].ToString(),
-                                Nombres = dr["Nombres"].ToString(),
-                                Telefono = dr["Telefono"].ToString(),
-                                Correo = dr["Correo"].ToString(),
-                                Ciudad = dr["Ciudad"].ToString(),
-                                FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"])
-                            };
-                        }
-                    }*/
-            return "hola";
+            decimal resultado;
+            resultado=request.numero1+request.numero2;
+            return resultado;
                          
         }
     }

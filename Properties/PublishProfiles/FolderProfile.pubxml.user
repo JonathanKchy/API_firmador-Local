@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\FirmadorAPI</_PublishTargetUrl>
-    <History>True|2022-10-03T21:50:15.8709665Z;True|2022-10-03T16:17:24.1971015-05:00;True|2022-10-03T16:11:31.7057106-05:00;True|2022-10-03T11:36:51.6119287-05:00;True|2022-10-03T10:38:25.8909419-05:00;True|2022-10-03T10:20:33.7513468-05:00;True|2022-10-03T09:25:28.6161769-05:00;True|2022-10-03T08:51:40.7188523-05:00;True|2022-10-03T08:42:05.3139274-05:00;True|2022-09-30T16:45:34.4981708-05:00;True|2022-09-30T16:36:49.4414897-05:00;True|2022-09-30T16:21:58.7956620-05:00;True|2022-09-29T12:18:44.9864593-05:00;</History>
+    <History>True|2022-10-04T16:54:19.7484555Z;True|2022-10-04T10:49:27.3729173-05:00;True|2022-10-04T10:47:36.6637809-05:00;True|2022-10-04T10:43:37.5251707-05:00;True|2022-10-03T16:50:15.8709665-05:00;True|2022-10-03T16:17:24.1971015-05:00;True|2022-10-03T16:11:31.7057106-05:00;True|2022-10-03T11:36:51.6119287-05:00;True|2022-10-03T10:38:25.8909419-05:00;True|2022-10-03T10:20:33.7513468-05:00;True|2022-10-03T09:25:28.6161769-05:00;True|2022-10-03T08:51:40.7188523-05:00;True|2022-10-03T08:42:05.3139274-05:00;True|2022-09-30T16:45:34.4981708-05:00;True|2022-09-30T16:36:49.4414897-05:00;True|2022-09-30T16:21:58.7956620-05:00;True|2022-09-29T12:18:44.9864593-05:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -79,10 +79,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/API2.dll">
-      <publishTime>10/03/2022 16:50:15</publishTime>
+      <publishTime>10/04/2022 11:54:16</publishTime>
     </File>
     <File Include="bin/API2.pdb">
-      <publishTime>10/03/2022 16:50:15</publishTime>
+      <publishTime>10/04/2022 11:54:16</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/16/2020 15:38:42</publishTime>

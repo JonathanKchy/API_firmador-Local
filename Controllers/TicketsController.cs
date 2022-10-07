@@ -8,16 +8,15 @@ using System.Web.Http;
 
 namespace API2.Controllers
 {
-    public class ActividadEconomicaController : ApiController
+    public class TicketsController : ApiController
     {
         [HttpGet]
-        [Route("api/ActividadEconomica")]
-        public List<ActividadEconomica> Get()
+        [Route("api/Tickets")]
+        public List<Tickets> Get()
         {
 
-            
-                return UsuarioData.ListarActividad();
-           
+            return UsuarioData.ListarTicket();
+
         }
     }
 }
