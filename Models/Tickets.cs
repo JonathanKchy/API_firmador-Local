@@ -16,5 +16,6 @@ namespace API2.Models
         public string estadoTicket { get; set; }
         public string tipoTicket { get; set; }
         public string fechaCierre { get; set; }
+        public string rol { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace API2.Controllers
         {
 
 
-            return UsuarioData.ListarCertificadosVendidos(request.ano,request.mes,request.dia);
+            return UsuarioData.ListarCertificadosVendidos(request.tiempo);
 
         }
     }

@@ -10,5 +10,6 @@ namespace API2.Models
         public int idPago { get; set; }
         public string numeroFactura { get; set; }
         public string fecha { get; set; }
+
     }
 }

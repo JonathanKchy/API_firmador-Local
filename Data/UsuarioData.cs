@@ -300,7 +300,8 @@ namespace API2.Data
                             detalle = dr["detalle"].ToString(),
                             estadoTicket = dr["estadoTicket"].ToString(),
                             tipoTicket = dr["tipoTicket"].ToString(),
-                            fechaCierre = dr["fechaCierre"].ToString()
+                            fechaCierre = dr["fechaCierre"].ToString(),
+                            rol = dr["rol"].ToString()
                         });
                     }
                 }
@@ -315,8 +316,8 @@ namespace API2.Data
 
         }
 
-        //Solicitud para obtener el reporte de tickets
-        public static int ListarCertificadosVendidos(String ano, String mes, String dia)
+        //Solicitud para obtener el reporte de certificados vendidos
+        public static int ListarCertificadosVendidos(DateTime tiempo)
         {
             int contador = 0;
             Conexion con = new Conexion();
@@ -325,10 +326,10 @@ namespace API2.Data
             {
                 SqlCommand cmd = new SqlCommand("consulta.CertificadosVendidos", oConexion);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ano", ano);
-                cmd.Parameters.AddWithValue("@mes", mes);
-                cmd.Parameters.AddWithValue("@dia", dia);
-                Console.WriteLine(cmd.CommandText.ToString());
+                cmd.Parameters.AddWithValue("@fecha", tiempo);
+                //cmd.Parameters.AddWithValue("@mes", mes);
+                //cmd.Parameters.AddWithValue("@dia", dia);
+                //Console.WriteLine(cmd.CommandText.ToString());
 
                 //try
                 //{
@@ -360,6 +361,67 @@ namespace API2.Data
             }
 
         }
+
+        //consultar sin fotos
+        public static List<ConsultaSinFotos> ListarConsultaSinFotos()
+        {
+            Conexion con = new Conexion();
+            List<ConsultaSinFotos> oListaUsuario = new List<ConsultaSinFotos>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
+            {
+                SqlCommand cmd = new SqlCommand("consulta.tablaSinFotos", oConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                //try
+                //{
+                oConexion.Open();
+                //cmd.ExecuteNonQuery();
+
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oListaUsuario.Add(new ConsultaSinFotos()
+                        {
+                            /*IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                            DocumentoIdentidad = dr["DocumentoIdentidad"].ToString(),
+                            Nombres = dr["Nombres"].ToString(),
+                            Telefono = dr["Telefono"].ToString(),
+                            Correo = dr["Correo"].ToString(),
+                            Ciudad = dr["Ciudad"].ToString(),
+                            FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"])*/
+
+                            ci = dr["ci"].ToString(),
+                            nombre = dr["nombre"].ToString(),
+                            segundoNombre = dr["segundoNombre"].ToString(),
+                            apellido = dr["apellido"].ToString(),
+                            segundoApellido = dr["segundoApellido"].ToString(),
+                            numeroSolicitud = dr["numeroSolicitud"].ToString(),
+                            fechaEmision = dr["fechaEmision"].ToString(),
+                            fechaVencimiento = dr["fechaVencimiento"].ToString(),
+                            correo = dr["correo"].ToString(),
+                            celular = dr["celular"].ToString(),
+                            telefono = dr["telefono"].ToString(),
+                            ciudad = dr["ciudad"].ToString(),
+                            sector = dr["sector"].ToString(),
+                            direccionPersonal= dr["direccionPersonal"].ToString(),
+                            direccionOficina = dr["direccionOficina"].ToString(),
+                            ip = dr["ip"].ToString(),
+                            idSolicitudCertificado = Convert.ToInt32(dr["idSolicitudCertificado"])
+                        });
+                    }
+                }
+                return oListaUsuario;
+                //}
+                //catch (Exception ex)
+                //{
+                //  return oListaUsuario;
+                //}
+
+            }
+
+        }
+
     }
 
 }
