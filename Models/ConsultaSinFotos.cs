@@ -25,5 +25,7 @@ namespace API2.Models
         public string direccionOficina { get; set; }
         public string ip { get; set; }
         public int idSolicitudCertificado { get; set; }
+        public string actividadEconomica { get; set; }
+        public string ruc { get; set; }
     }
 }

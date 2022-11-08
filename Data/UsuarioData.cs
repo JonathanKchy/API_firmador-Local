@@ -407,7 +407,9 @@ namespace API2.Data
                             direccionPersonal= dr["direccionPersonal"].ToString(),
                             direccionOficina = dr["direccionOficina"].ToString(),
                             ip = dr["ip"].ToString(),
-                            idSolicitudCertificado = Convert.ToInt32(dr["idSolicitudCertificado"])
+                            idSolicitudCertificado = Convert.ToInt32(dr["idSolicitudCertificado"]),
+                            actividadEconomica = dr["actividadEconomica"].ToString(),
+                            ruc = dr["ruc"].ToString()
                         });
                     }
                 }
