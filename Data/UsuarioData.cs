@@ -424,6 +424,74 @@ namespace API2.Data
 
         }
 
+        //Solicitud para obtener los usuarios que no terminaron el proceso de obtener firma electrónica
+        public static List<UsuariosEnProceso> ListarUsuariosEnProceso(AccesoUsuario accesoUsuario)
+        {
+            List<UsuariosEnProceso> oListaUsuario = new List<UsuariosEnProceso>();
+            if (accesoUsuario == null)
+            {
+                oListaUsuario.Add(new UsuariosEnProceso()
+                {
+                    identificacion = "Error",
+                    correo = "",
+                    estado = "No se envió las credenciales",
+                    fechaRegistro = "",
+                });
+
+                return oListaUsuario;
+
+            }
+            else if (accesoUsuario.usuario.Equals("Marco Logacho") && accesoUsuario.clave.Equals("M@rc0L!!")) 
+            {
+                Conexion con = new Conexion();
+                
+                using (SqlConnection oConexion = new SqlConnection(Conexion.rutaConexion))
+                {
+                    SqlCommand cmd = new SqlCommand("consulta.UsuariosEnProcesoSP", oConexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    //try
+                    //{
+                    oConexion.Open();
+                    //cmd.ExecuteNonQuery();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            oListaUsuario.Add(new UsuariosEnProceso()
+                            {
+                                identificacion = dr["identificacion"].ToString(),
+                                correo = dr["correo"].ToString(),
+                                estado = dr["estado"].ToString(),
+                                fechaRegistro = dr["fechaRegistro"].ToString(),
+                            });
+                        }
+                    }
+                    return oListaUsuario;
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //  return oListaUsuario;
+                    //}
+
+                }
+            }
+            else
+            {
+                oListaUsuario.Add(new UsuariosEnProceso()
+                {
+                    identificacion = "Error",
+                    correo = "",
+                    estado = "Credenciales Incorrectas",
+                    fechaRegistro = "",
+                });
+
+                return oListaUsuario;
+            }
+
+        }
+
     }
 
 }

@@ -173,7 +173,9 @@
     <Compile Include="Controllers\ReportePagosTransferenciaController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Controllers\UsuariosEnProcesoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Models\AccesoUsuario.cs" />
     <Compile Include="Models\ActividadEconomica.cs" />
     <Compile Include="Data\Conexion.cs" />
     <Compile Include="Data\ConexionSodig.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="Models\ReportePagosTransferencia.cs" />
     <Compile Include="Models\Tickets.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\UsuariosEnProceso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +250,7 @@
     <Folder Include="Views\Default\" />
     <Folder Include="Views\ReportePagosTransferencia\" />
     <Folder Include="Views\Tickets\" />
+    <Folder Include="Views\UsuariosEnProceso\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
